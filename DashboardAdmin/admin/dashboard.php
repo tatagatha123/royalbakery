@@ -198,7 +198,7 @@ if(!$laporan_penjualan){
             <h2>Data Transaksi</h2>
             <table class="report-table">
                 <thead>
-                    <tr><th>ID</th><th>User</th><th>Tanggal</th><th>Total</th><th>Metode</th></tr>
+                    <tr><th>ID</th><th>User</th><th>Tanggal</th><th>Total</th><th>Metode</th><th>Status</th><th>Aksi</th></tr>
                 </thead>
                 <tbody>
                     <?php while($t = mysqli_fetch_assoc($transaksi)): ?>
@@ -208,6 +208,39 @@ if(!$laporan_penjualan){
                         <td><?= $t['tanggal_pesan'] ?></td>
                         <td>Rp <?= number_format($t['total'],0,',','.') ?></td>
                         <td><?= $t['metode_pembayaran'] ?></td>
+                        <td>
+                        <?php
+                        $badgeClass = [
+                        "Menunggu Konfirmasi" => "w1",
+                        "Diproses"           => "w2",
+                        "Dikirim"            => "w3",
+                        "Diterima"           => "w4"
+                        ];
+
+                        // jika status tidak ditemukan → fallback w1
+                        $class = isset($badgeClass[$t['status']]) ? $badgeClass[$t['status']] : "w1";
+                    ?>
+
+                     <span class="status <?= $class; ?>">
+                        <?= $t['status']; ?>
+                    </span>
+                    </td>
+
+                    <!-- Aksi ubah status -->
+                    <td>
+                       <?php if ($t['status'] == "Menunggu Konfirmasi"): ?>
+                          <a href="ubah_status.php?id=<?= $t['id'] ?>&to=Diproses" class="action-btn">Proses</a>
+                          <a class="action-btn disabled">Kirim</a>
+
+                        <?php elseif ($t['status'] == "Diproses"): ?>
+                          <a class="action-btn disabled">Proses</a>
+                          <a href="ubah_status.php?id=<?= $t['id'] ?>&to=Dikirim" class="action-btn">Kirim</a>
+
+                        <?php else: ?> <!-- Dikirim atau Selesai -->
+                          <a class="action-btn disabled">Proses</a>
+                          <a class="action-btn disabled">Kirim</a>
+                        <?php endif; ?>
+                    </td>
                     </tr>
                     <?php endwhile; ?>
                 </tbody>
