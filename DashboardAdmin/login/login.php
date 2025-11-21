@@ -39,7 +39,7 @@ if (isset($_POST['login'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin - Royal Bakery</title>
+    <title>INI COBA COBA - Royal Bakery</title>
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
