@@ -78,8 +78,8 @@ $catatan_db = mysqli_real_escape_string($koneksi, $catatan);
 
 // INSERT ke tabel transaksi
 $sql = "INSERT INTO transaksi 
-        (user_id, username, nama_user, nama_produk, jumlah, harga, total, alamat, metode_pembayaran, catatan, tanggal_pesan)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        (user_id, username, nama_user, nama_produk, jumlah, harga, total, alamat, metode_pembayaran, catatan, tanggal_pesan, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Menunggu Konfirmasi')";
 
 $stmt = mysqli_prepare($koneksi, $sql);
 if (!$stmt) {
@@ -180,9 +180,10 @@ if (mysqli_stmt_execute($stmt)) {
     <p><strong>Tanggal:</strong> <?= $tanggal_pesan ?></p>
   </div>
 
-  <div class="btns">
+<div class="btns">
     <a class="btn btn-primary" href="../Home/homepage.php">🏠 Kembali ke Home</a>
-  </div>
+    <a class="btn btn-secondary" href="../pesanan/pesanan_saya.php">📦 Lihat Pesanan Saya</a>
+</div>
 </div>
 
 <script>
