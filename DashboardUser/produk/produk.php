@@ -31,7 +31,7 @@
     <?php
     include '../../koneksi/koneksi.php';
 
-    $query = "SELECT produk_id, nama_produk, harga, stok, gambar FROM produk ORDER BY produk_id ASC";
+    $query = "SELECT produk_id, nama_produk, harga, stok, gambar FROM produk ORDER BY produk_id DESC";
     $result = mysqli_query($koneksi, $query);
 
     if ($result && mysqli_num_rows($result) > 0) {
