@@ -6,14 +6,9 @@
   <link rel="stylesheet" href="orderr.css">
 </head>
 <body>
-
   <header>
     <nav class="navbar">
       <div class="logo">🍞 ROYAL BAKERY</div>
-      <ul class="nav-links">
-        <li><a href="../home/home.php">Home</a></li>
-        <li><a href="../about/about.php">About Us</a></li>
-      </ul>
     </nav>
   </header>
 

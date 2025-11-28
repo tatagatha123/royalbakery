@@ -20,9 +20,11 @@
       </div>
 
       <ul class="nav-links">
-        <li><a href="/royalbakery/dashboardUser/home/homepage.php">Home</a></li>
-        <li><a href="/royalbakery/dashboardUser/about/about.php" class="active">About Us</a></li>
-        <li><a href="/royalbakery/dashboardUser/login/login.php">Login</a></li>
+        <li><a href="../../dashboardUser/home/homepage.php">Home</a></li>
+        <li><a href="../../dashboardUser/about/about.php" class="active">About Us</a></li>
+        <li><a href="../../dashboardUser/produk/produk.php">Menu</a></li>
+        <li><a href="../../dashboardUser/pesanan/pesanan_saya.php">Lihat Pesanan</a></li>
+        <li><a href="../../dashboardUser/logout/logout.php">Logout</a></li>
       </ul>
     </nav>
   </header>
@@ -30,9 +32,9 @@
   <!-- SIDEBAR -->
   <div class="sidebar">
     <ul class="sidebar-menu">
-    <li><a href="/royalbakery/dashboardUser/home/homepage.php">Home</a></li>
-    <li><a href="/royalbakery/dashboardUser/about/about.php">About Us</a></li>
-    <li><a href="/royalbakery/dashboardUser/login/login.php">Login</a></li>
+    <li><a href="../../dashboardUser/home/homepage.php">Home</a></li>
+    <li><a href="../../dashboardUser/about/about.php">About Us</a></li>
+    <li><a href="../../dashboardUser/login/login.php">Login</a></li>
     </ul>
   </div>
   <div class="overlay"></div>
