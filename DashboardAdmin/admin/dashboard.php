@@ -109,7 +109,7 @@ $transaksi = mysqli_query($koneksi, "SELECT * FROM transaksi ORDER BY tanggal_pe
 $users = mysqli_query($koneksi, "SELECT * FROM users ORDER BY user_id DESC");
 
 // Laporan penjualan
-$laporan_penjualan = mysqli_query($koneksi, "SELECT * FROM laporan_penjualan");
+$laporan_penjualan = mysqli_query($koneksi, "SELECT * FROM laporan_penjualan ORDER BY tanggal DESC");
 
 if(!$laporan_penjualan){
     die("Query Error: ".mysqli_error($koneksi));
@@ -208,39 +208,50 @@ if(!$laporan_penjualan){
                         <td><?= $t['tanggal_pesan'] ?></td>
                         <td>Rp <?= number_format($t['total'],0,',','.') ?></td>
                         <td><?= $t['metode_pembayaran'] ?></td>
-                        <td>
-                        <?php
-                        $badgeClass = [
-                        "Menunggu Konfirmasi" => "w1",
-                        "Diproses"           => "w2",
-                        "Dikirim"            => "w3",
-                        "Diterima"           => "w4"
-                        ];
 
-                        // jika status tidak ditemukan → fallback w1
-                        $class = isset($badgeClass[$t['status']]) ? $badgeClass[$t['status']] : "w1";
-                    ?>
 
-                     <span class="status <?= $class; ?>">
-                        <?= $t['status']; ?>
-                    </span>
-                    </td>
+<td>
+    <?php
+    $badgeClass = [
+        "Menunggu Konfirmasi" => "w1",
+        "Diproses"           => "w2",
+        "Dikirim"            => "w3",
+        "Diterima"           => "w4"
+    ];
 
-                    <!-- Aksi ubah status -->
-                    <td>
-                       <?php if ($t['status'] == "Menunggu Konfirmasi"): ?>
-                          <a href="ubah_status.php?id=<?= $t['id'] ?>&to=Diproses" class="action-btn">Proses</a>
-                          <a class="action-btn disabled">Kirim</a>
+    // jika status tidak ditemukan → fallback w1
+    $class = isset($badgeClass[$t['status']]) ? $badgeClass[$t['status']] : "w1";
+    ?>
 
-                        <?php elseif ($t['status'] == "Diproses"): ?>
-                          <a class="action-btn disabled">Proses</a>
-                          <a href="ubah_status.php?id=<?= $t['id'] ?>&to=Dikirim" class="action-btn">Kirim</a>
+    <span class="status <?= $class; ?>">
+        <?= $t['status']; ?>
+    </span>
+</td>
 
-                        <?php else: ?> <!-- Dikirim atau Selesai -->
-                          <a class="action-btn disabled">Proses</a>
-                          <a class="action-btn disabled">Kirim</a>
-                        <?php endif; ?>
-                    </td>
+    <!-- Aksi ubah status -->
+<td>
+    <?php if ($t['status'] == "Menunggu Konfirmasi"): ?>
+        <a href="ubah_status.php?id=<?= $t['id'] ?>&to=Diproses" class="action-btn">Proses</a>
+        <a class="action-btn disabled">Kirim</a>
+
+    <?php elseif ($t['status'] == "Diproses"): ?>
+        <a class="action-btn disabled">Proses</a>
+        <a href="ubah_status.php?id=<?= $t['id'] ?>&to=Dikirim" class="action-btn">Kirim</a>
+
+    <?php else: ?> <!-- Dikirim atau Selesai -->
+        <a class="action-btn disabled">Proses</a>
+        <a class="action-btn disabled">Kirim</a>
+    <?php endif; ?>
+</td>
+
+
+
+
+
+
+
+                
+
                     </tr>
                     <?php endwhile; ?>
                 </tbody>
