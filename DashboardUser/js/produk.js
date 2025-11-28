@@ -117,22 +117,28 @@ menuCards.forEach(card => {
 // Cart icon click
 if (cartIcon) {
   cartIcon.addEventListener("click", () => {
-    const logged = isElementLoggedIn(cartIcon) || isElementLoggedIn(document.body);
-    if (!logged) {
-      localStorage.setItem("returnAfterLogin", window.location.pathname + window.location.search);
-      window.location.href = "../../DashboardUser/Login/login.php?redirect=" + encodeURIComponent(window.location.pathname + window.location.search);
-      return;
+    const isLoggedIn = cartIcon.dataset.login == "1"; // cek login dari PHP
+
+    // Jika belum login, jangan lanjut ke halaman order
+    if (!isLoggedIn) {
+      // Simpan halaman sekarang agar bisa redirect setelah login
+      const currentPath = window.location.pathname + window.location.search;
+      localStorage.setItem("returnAfterLogin", currentPath);
+      // Redirect ke halaman login
+      window.location.href = "../../dashboardUser/login/login.php?redirect=" + encodeURIComponent(currentPath);
+      return; // PENTING: hentikan eksekusi
     }
 
+    // Jika sudah login tapi keranjang kosong
     if (cart.length === 0) {
       alert("Keranjang Anda kosong 😢");
       return;
     }
 
-    window.location.href = "../../DashboardUser/order/order.php";
+    // Jika sudah login dan keranjang ada isi, arahkan ke halaman order
+    window.location.href = "../../dashboardUser/order/order.php";
   });
 }
-
 if (searchBar) {
   searchBar.addEventListener("input", e => {
     const searchTerm = e.target.value.toLowerCase();

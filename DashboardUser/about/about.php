@@ -1,3 +1,8 @@
+<?php
+session_start(); // wajib di awal
+$isLoggedIn = isset($_SESSION['user_id']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +29,16 @@
         <li><a href="../../dashboardUser/about/about.php" class="active">About Us</a></li>
         <li><a href="../../dashboardUser/produk/produk.php">Menu</a></li>
         <li><a href="../../dashboardUser/pesanan/pesanan_saya.php">Lihat Pesanan</a></li>
+         <!-- Jika belum login: tampilkan tombol Login -->
+    <?php if (!$isLoggedIn): ?>
+        <li><a href="../../dashboardUser/login/login.php">Login</a></li>
+    <?php endif; ?>
+
+    <!-- Jika sudah login: tampilkan tombol Pesanan Saya & Logout -->
+    <?php if ($isLoggedIn): ?>
         <li><a href="../../dashboardUser/logout/logout.php">Logout</a></li>
+    <?php endif; ?>
+</ul>
       </ul>
     </nav>
   </header>
