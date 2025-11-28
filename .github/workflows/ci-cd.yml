@@ -10,23 +10,20 @@ jobs:
     runs-on: self-hosted
 
     steps:
-
     # Step 0: Cari folder project
     - name: Set project path
       run: |
         PROJECT_PATH=$(find /home -name 'royalbakery' -type d 2>/dev/null | head -1)
         if [ -z "$PROJECT_PATH" ]; then
-          echo "❌ Error: Folder royalbakery tidak ditemukan di /home"
+          echo "Error: Folder royalbakery tidak ditemukan di /home"
           exit 1
         fi
         echo "PROJECT_PATH=$PROJECT_PATH" >> $GITHUB_ENV
-        echo "✅ Found project at: $PROJECT_PATH"
+        echo "Found project at: $PROJECT_PATH"
 
-    # ✅ FIX PALING PENTING (checkout repo ke folder server kamu)
-    - name: Checkout repository to server path
-      uses: actions/checkout@v3
-      with:
-        path: ${{ env.PROJECT_PATH }}
+    # Checkout dihapus karena menyebabkan error
+    # - name: Checkout repository to server path
+    #   uses: actions/checkout@v3
 
     # Step 1: Pull latest changes
     - name: Pull latest changes
@@ -65,12 +62,12 @@ jobs:
     - name: Health check
       run: curl -f http://localhost:8080 || exit 1
 
-    # Step 7: Notifikasi
+    # Step 7: Notifikasi status
     - name: Notify deployment status
       if: always()
       run: |
         if [ "${{ job.status }}" = "success" ]; then
-          echo "✅ Deployment berhasil! Aplikasi sudah diupdate."
+          echo "Deployment berhasil."
         else
-          echo "❌ Deployment gagal! Periksa log error di atas."
+          echo "Deployment gagal."
         fi
