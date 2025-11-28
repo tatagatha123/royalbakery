@@ -1,0 +1,169 @@
+/* ================= GLOBAL RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #fffaf5 0%, #ffe9d1 100%);
+    color: #333;
+    overflow-x: hidden;
+    padding-bottom: 50px;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f7b267;
+    padding: 18px 60px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 24px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #6b4f2e;
+}
+
+/* MOBILE MENU */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    background: white;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+    border-radius: 5px;
+}
+
+
+/* ================= CONTAINER ================= */
+/* .container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    animation: fadeIn 1s ease;
+} */
+
+/* h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #6b4f2e;
+    font-size: 2rem;
+} */
+
+/* ================= TABLE ================= */
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin: 50px auto;
+}
+
+th {
+    background: #dfa86c;
+    color: white;
+    padding: 12px;
+    font-weight: 600;
+}
+
+td {
+    border-bottom: 1px solid #eee;
+    padding: 12px;
+    text-align: center;
+    color: #444;
+}
+
+/* ================= STATUS BADGES ================= */
+.status {
+    padding: 8px 14px;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+    font-size: 0.9rem;
+}
+
+/* .w1 { background: #aaaaaa; }   Menunggu Konfirmasi */
+/* .w2 { background: #3787d2; }   Diproses */
+/* .w3 { background: #3787d2; }   Dikirim */
+/* .w4 { background: #28a745; }   Diterima */
+
+/* ================= BUTTON ================= */
+.btn-konfirmasi {
+    padding: 8px 16px;
+    background: #28a745;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    /* box-shadow: 0 4px 10px rgba(255,152,0,0.3); */
+}
+
+.btn-konfirmasi:hover {
+    background: #1f8136;
+    transform: scale(1.05);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    td, th {
+        padding: 10px;
+    }
+
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+}
