@@ -34,6 +34,14 @@ jobs:
       run: |
         docker compose down || true
 
+    # ✅ Step 3.5: Cleanup container & network conflicts (FIX)
+    - name: Cleanup container & network conflicts
+      working-directory: ${{ env.PROJECT_PATH }}
+      run: |
+        docker rm -f royalbakery-mysql-1 || true
+        docker network rm royalbakery_default || true
+        docker network rm royalbakery_app-network || true
+
     # Step 4: Clean old docker images
     - name: Remove old images
       working-directory: ${{ env.PROJECT_PATH }}
