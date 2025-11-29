@@ -15,7 +15,7 @@ $isLoggedIn = isset($_SESSION['username']);
     <!-- Header -->
     <header>
         <nav class="navbar">
-            <div class="logo">🍞 ROYAL BAKERY</div>
+            <div class="logo">🍞 ROYAL BAKERY NAJMIRA TATA</div>
 
             <!-- Toggle untuk versi mobile -->
             <div class="menu-toggle">
