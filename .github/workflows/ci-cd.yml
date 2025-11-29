@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  royalbakery:
+  royalbakery-agatha:
     runs-on: laptop-agatha
 
     steps:
@@ -69,7 +69,7 @@ jobs:
           echo "❌ Deployment gagal di laptop-agatha!"
         fi
 
-  royalbakery:
+  royalbakery-najmira:
     runs-on: laptop-najmira
 
     steps:
