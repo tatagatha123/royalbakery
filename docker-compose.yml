@@ -26,10 +26,10 @@ services:
     depends_on:
       - mysql
     environment: # Kredensial DB-mu (ini sama dari proyekmu)
-      - DB_HOST=mysql
-      - DB_NAME=dbproject_royalbakery
-      - DB_USER=appuser
-      - DB_PASSWORD=password
+      DB_HOST: mysql
+      DB_NAME: dbproject_royalbakery
+      DB_USER: appuser
+      DB_PASSWORD: password
     networks:
       - app-network
 
@@ -56,8 +56,8 @@ services:
     ports:
       - "8081:80"
     environment:
-      - PMA_HOST=mysql
-      - MYSQL_ROOT_PASSWORD=password
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: password
     depends_on:
       - mysql
     networks:
